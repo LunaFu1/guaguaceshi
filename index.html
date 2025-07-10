@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>我的项目</title>
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
     <link rel="stylesheet" href="css/ty.css">
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link rel="stylesheet" href="assets/free/css/all.min.css">
 </head>
 
 <body>
@@ -14,7 +15,7 @@
 
 <header class="logo-card">
   <!-- 左侧 Logo 图 -->
-  <img src="assets/images/htx-token-ht-logo.png" alt="Logo" class="logo-card-img" />
+  <img src="assets/images/logo.png" alt="Logo" class="logo-card-img" />
 
   <!-- 右侧图标区域：客服 / 语言切换 / 注册按钮 -->
   <div class="logo-right-icons">
@@ -25,19 +26,68 @@
     </svg>
 
     <!-- 语言切换图标 -->
-    <svg class="language-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <svg id="languageSwitch" class="language-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
       <path fill="currentColor" d="M352 256c0 22.2-1.2 43.6-3.3 64H163.4c-2.2-20.4-3.3-41.8-3.3-64s1.2-43.6 3.3-64h185.3c2.2 20.4 3.3 41.8 3.3 64zm28.8-64H504c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42 3.2-64s-1.1-43.4-3.2-64zM493.4 160H376.7c-10-63.9-29.8-117.4-55.3-151.6 78.3 20.7 142 77.5 171.9 151.6zM344.3 160H167.7c6.1-36.4 15.5-68.6 27-94.7 10.5-23.6 22.2-40.7 33.5-51.5C239.4 3.2 248.7 0 256 0s16.6 3.2 27.8 13.8c11.3 10.8 23 27.9 33.5 51.5 11.6 26 20.9 58.2 27 94.7zM135.3 160H18.6C48.6 85.9 112.2 29.1 190.6 8.4 165.1 42.6 145.3 96.1 135.3 160zM8.1 192h123.1c-2.1 20.6-3.2 42-3.2 64s1.1 43.4 3.2 64H8.1C2.8 299.5 0 278.1 0 256s2.8-43.5 8.1-64zM194.7 446.6c-11.6-26-20.9-58.2-27-94.6h176.6c-6.1 36.4-15.5 68.6-27 94.6-10.5 23.6-22.2 40.7-33.5 51.5C272.6 508.8 263.3 512 256 512s-16.6-3.2-27.8-13.8c-11.3-10.8-23-27.9-33.5-51.5zM135.3 352c10 63.9 29.8 117.4 55.3 151.6C112.2 482.9 48.6 426.1 18.6 352h116.7zm358.1 0c-30 74.1-93.6 130.9-171.9 151.6 25.5-34.2 45.2-87.7 55.3-151.6h116.6z"/>
     </svg>
 
     <!-- 注册按钮 -->
-    <button class="register-button">注册</button>
+    <button id="registerBtn" class="register-button">注册</button>
 
   </div>
 </header>
 
+<!-- ✅ 公告滚动条容器 -->
+<div class="announcement-bar">
+  <i class="fa-regular fa-bell announcement-icon"></i>
+  <div class="announcement-content">
+    <div class="announcement-text" id="announcementText"></div>
+  </div>
+</div>
 
+<!-- ✅轮播图容器 -->
+<!-- ✅ 高级感轮播区域 -->
+<div class="luxury-carousel">
+  <div class="luxury-slide active" style="background-image: url('assets/images/banner1.jpg');">
+    <div class="luxury-text top-left">
+      <h2>全新合约上线</h2>
+      <p>支持100倍杠杆，重塑市场节奏</p>
+    </div>
+    <div class="luxury-action" onclick="location.href='contract.html'">
+      <span class="luxury-action-text">去看看</span>
+      <span class="luxury-arrow">➤</span>
+    </div>
+  </div>
 
-        
+  <div class="luxury-slide" style="background-image: url('assets/images/banner2.jpg');">
+    <div class="luxury-text top-left">
+      <h2>新用户福利</h2>
+      <p>注册即送10 USDT</p>
+    </div>
+    <div class="luxury-action" onclick="location.href='airdrop.html'">
+      <span class="luxury-action-text">立即领取</span>
+      <span class="luxury-arrow">➤</span>
+    </div>
+  </div>
+
+  <div class="luxury-slide" style="background-image: url('assets/images/banner3.jpg');">
+    <div class="luxury-text top-left">
+      <h2>交易返佣50%</h2>
+      <p>限时参与，分享即赚</p>
+    </div>
+    <div class="luxury-action" onclick="location.href='rebate.html'">
+      <span class="luxury-action-text">了解详情</span>
+      <span class="luxury-arrow">➤</span>
+    </div>
+  </div>
+
+  <!-- ✅ 底部圆点 -->
+  <div class="luxury-dots">
+    <div class="dot active"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+</div>
+
     
         
 
@@ -58,9 +108,9 @@
 
     
     <div id="bottom-nav-placeholder"></div>
-    <script src="JavaScript/index.js"></script>
     <script src="JavaScript/ty.js"></script>
     <script src="JavaScript/tb.js"></script>
+    <script src="JavaScript/index.js"></script>
 
 </body>
 </html>
