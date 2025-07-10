@@ -1,23 +1,3 @@
-// ✅ 公告内容数组（后期可由后台 API 替代）
-const announcements = [
-  "小皮皮，你浪哥牛不牛逼！",
-  "🔥 BTC 永续合约震撼上线，支持 100x 杠杆！",
-  "🎁 注册即送 10 USDT 新手空投，限时领取！",
-  "📣 限时交易返佣 50%，速来参与！"
-];
-
-// ✅ 获取滚动文字容器
-const announcementText = document.getElementById("announcementText");
-
-// ✅ 将每条公告包在红色 + 加粗的 span 中
-const html = announcements.map(text =>
-  `<span style="color: #ef4444; font-weight: bold;">${text}</span>`
-).join("    "); // 使用空格控制间距
-
-// ✅ 注入到页面中
-announcementText.innerHTML = html;
-
-
 // ✅ 高级感轮播控制脚本
 document.addEventListener("DOMContentLoaded", function () {
   const slides = document.querySelectorAll('.luxury-slide');   // 所有轮播图片

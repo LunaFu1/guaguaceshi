@@ -21,28 +21,67 @@
   <div class="logo-right-icons">
     
     <!-- 客服图标 -->
-    <svg id="customerService" class="customer-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <a href="html/kf.html" class="customer-icon">
+    <svg id="customerService"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
       <path fill="currentColor" d="M256 48C141.1 48 48 141.1 48 256v40c0 13.3-10.7 24-24 24S0 309.3 0 296v-40C0 114.6 114.6 0 256 0s256 114.6 256 256v144.1c0 48.6-39.4 88-88.1 88H313.6c-8.3 14.3-23.8 24-41.6 24h-32c-26.5 0-48-21.5-48-48s21.5-48 48-48h32c17.8 0 33.3 9.7 41.6 24h110.4c22.1 0 40-17.9 40-40V256c0-114.9-93.1-208-208-208zM144 208h16c17.7 0 32 14.3 32 32v112c0 17.7-14.3 32-32 32h-16c-35.3 0-64-28.7-64-64v-48c0-35.3 28.7-64 64-64zm224 0c35.3 0 64 28.7 64 64v48c0 35.3-28.7 64-64 64h-16c-17.7 0-32-14.3-32-32V240c0-17.7 14.3-32 32-32h16z"/>
-    </svg>
+    </svg></a>
 
     <!-- 语言切换图标 -->
-    <svg id="languageSwitch" class="language-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+     <button id="languageSwitch" class="language-icon" aria-label="切换语言">
+    <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
       <path fill="currentColor" d="M352 256c0 22.2-1.2 43.6-3.3 64H163.4c-2.2-20.4-3.3-41.8-3.3-64s1.2-43.6 3.3-64h185.3c2.2 20.4 3.3 41.8 3.3 64zm28.8-64H504c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42 3.2-64s-1.1-43.4-3.2-64zM493.4 160H376.7c-10-63.9-29.8-117.4-55.3-151.6 78.3 20.7 142 77.5 171.9 151.6zM344.3 160H167.7c6.1-36.4 15.5-68.6 27-94.7 10.5-23.6 22.2-40.7 33.5-51.5C239.4 3.2 248.7 0 256 0s16.6 3.2 27.8 13.8c11.3 10.8 23 27.9 33.5 51.5 11.6 26 20.9 58.2 27 94.7zM135.3 160H18.6C48.6 85.9 112.2 29.1 190.6 8.4 165.1 42.6 145.3 96.1 135.3 160zM8.1 192h123.1c-2.1 20.6-3.2 42-3.2 64s1.1 43.4 3.2 64H8.1C2.8 299.5 0 278.1 0 256s2.8-43.5 8.1-64zM194.7 446.6c-11.6-26-20.9-58.2-27-94.6h176.6c-6.1 36.4-15.5 68.6-27 94.6-10.5 23.6-22.2 40.7-33.5 51.5C272.6 508.8 263.3 512 256 512s-16.6-3.2-27.8-13.8c-11.3-10.8-23-27.9-33.5-51.5zM135.3 352c10 63.9 29.8 117.4 55.3 151.6C112.2 482.9 48.6 426.1 18.6 352h116.7zm358.1 0c-30 74.1-93.6 130.9-171.9 151.6 25.5-34.2 45.2-87.7 55.3-151.6h116.6z"/>
     </svg>
+    </button>
 
     <!-- 注册按钮 -->
-    <button id="registerBtn" class="register-button">注册</button>
+    <a href="html/dl.html" class="register-button">注册</a>
 
   </div>
 </header>
 
-<!-- ✅ 公告滚动条容器 -->
-<div class="announcement-bar">
-  <i class="fa-regular fa-bell announcement-icon"></i>
-  <div class="announcement-content">
-    <div class="announcement-text" id="announcementText"></div>
+<!-- ✅ 下拉菜单（初始隐藏） -->
+<!-- 语言下拉菜单 -->
+<div id="languageMenu" class="language-menu hidden">
+  <div class="lang-item" data-lang="en">
+    <img src="assets/images/us.svg" alt="English" class="flag-icon"> English
+  </div>
+  <div class="lang-item" data-lang="ja">
+    <img src="assets/images/jp.svg" alt="日本語" class="flag-icon"> 日本語
+  </div>
+  <div class="lang-item" data-lang="ko">
+    <img src="assets/images/kr.svg" alt="한국어" class="flag-icon"> 한국어
+  </div>
+  <div class="lang-item" data-lang="zh">
+  <img src="assets/images/my.svg" alt="马来西亚" class="flag-icon"> 简体中文（马来西亚）
+  </div>
+  <div class="lang-item" data-lang="fr">
+    <img src="assets/images/fr.svg" alt="Français" class="flag-icon"> Français
+  </div>
+  <div class="lang-item" data-lang="de">
+    <img src="assets/images/de.svg" alt="Deutsch" class="flag-icon"> Deutsch
+  </div>
+  <div class="lang-item" data-lang="ru">
+    <img src="assets/images/ru.svg" alt="Русский" class="flag-icon"> Русский
+  </div>
+  <div class="lang-item" data-lang="es">
+    <img src="assets/images/es.svg" alt="Español" class="flag-icon"> Español
+  </div>
+  <div class="lang-item" data-lang="br">
+    <img src="assets/images/br.svg" alt="Português (BR)" class="flag-icon"> Português (BR)
   </div>
 </div>
+
+
+<div class="fullwidth-welcome">
+  <div class="welcome-text">
+    <div class="welcome-title">👋 欢迎来到币圈星球</div>
+    <div class="welcome-subtitle">开启你的数字资产之旅</div>
+  </div>
+  <a href="html/dl.html" class="welcome-button">注册 / 登录</a>
+</div>
+
+
+
 
 <!-- ✅轮播图容器 -->
 <!-- ✅ 高级感轮播区域 -->
@@ -89,7 +128,48 @@
 </div>
 
     
-        
+<!-- 主流币种展示模块容器 -->
+<div class="coin-section">
+  <div class="coin-section-title">货币价格</div>
+
+  <div class="coin-grid">
+  <!-- BTC 卡片 -->
+  <div class="coin-card bg-btc">
+    <div class="coin-top">
+      <span class="coin-name">BTC/USDT</span>
+      <img src="assets/images/btc.svg" class="coin-icon" />
+    </div>
+    <div class="coin-center">
+      <div class="coin-change up">+2.82%</div>
+      <div class="coin-price">113330.00</div>
+    </div>
+  </div>
+
+  <!-- ETH 卡片 -->
+  <div class="coin-card bg-eth">
+    <div class="coin-top">
+      <span class="coin-name">ETH/USDT</span>
+      <img src="assets/images/eth.svg" class="coin-icon" />
+    </div>
+    <div class="coin-center">
+      <div class="coin-change up">+2.67%</div>
+      <div class="coin-price">2813.17</div>
+    </div>
+  </div>
+
+  <!-- TRUMP 卡片 -->
+  <div class="coin-card bg-trump">
+    <div class="coin-top">
+      <span class="coin-name">SOL/USDT</span>
+      <img src="assets/images/sol.svg" class="coin-icon" />
+    </div>
+    <div class="coin-center">
+      <div class="coin-change up">+5.94%</div>
+      <div class="coin-price">9.474000</div>
+    </div>
+  </div>
+</div>
+
 
 
 

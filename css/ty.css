@@ -1,7 +1,8 @@
 body {
   margin: 0;                                /* 去掉默认边距 */
   padding: 0;                               /* 去掉默认内边距 */
-  height: 100vh;                            /* 占满整个视口 */
+  min-height: 100vh;                            /* ✅ 让内容能撑开页面高度 */
+  height: auto;                            /* ✅ 允许自动增长 */
   display: flex;                            /* 弹性布局 */
   flex-direction: column;                  /* 改成从上往下排列 */
   justify-content: flex-start;             /* 顶部对齐 */
