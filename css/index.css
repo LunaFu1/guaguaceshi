@@ -38,6 +38,7 @@
   flex-shrink: 0;
 }
 
+/* 语言图标 */
 .language-icon {
   background: none;
   border: none;
@@ -49,6 +50,7 @@
   align-items: center;
   justify-content: center;
   color: #0a67ca;
+  cursor: pointer;
   flex-shrink: 0;
 }
 
