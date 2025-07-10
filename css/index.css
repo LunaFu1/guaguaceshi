@@ -1,0 +1,99 @@
+/* 顶部 Logo 卡片区域 */
+.logo-card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 12px 20px;
+  margin: 10px 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* logo 图片样式 */
+.logo-card-img {
+  height: 32px;
+  width: auto;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* 包裹右侧三个图标的容器 */
+.logo-right-icons {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin-left: auto;
+  gap: clamp(24px, 4vw, 80px);
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+/* 客服图标 */
+.customer-icon {
+  height: 25px;
+  width: 25px;
+  color: #0a67ca;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* 语言图标 */
+.language-icon {
+  height: 25px;
+  width: 25px;
+  color: #0a67ca;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* 注册按钮 */
+.register-button {
+  display: flex;                         /* ✅ 使用 Flex 实现内容居中 */
+  align-items: center;                  /* ✅ 垂直居中 */
+  justify-content: center;              /* ✅ 水平居中 */
+  padding: 8px 20px;                    /* ✅ 内边距更大更稳 */
+  background-color: #0a67ca;
+  color: white;
+  border: none;
+  border-radius: 999px;
+  font-size: 15px;
+  cursor: pointer;
+  flex-shrink: 0;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+}
+
+.register-button:hover {
+  background-color: #005bb5;
+}
+
+/* 媒体查询：适配手机屏 */
+@media screen and (max-width: 480px) {
+  .logo-card {
+    padding: 10px 16px;
+    min-height: 56px;
+  }
+
+  .logo-card-img {
+    height: 26px;
+  }
+
+  .logo-right-icons {
+    gap: clamp(12px, 4vw, 20px);
+  }
+
+  .customer-icon,
+  .language-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .register-button {
+    height: 32px;
+    line-height: 32px;
+    font-size: 14px;
+    padding: 0 14px;
+  }
+}

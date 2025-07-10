@@ -1,0 +1,83 @@
+body {
+  margin: 0;                                /* 去掉默认边距 */
+  padding: 0;                               /* 去掉默认内边距 */
+  height: 100vh;                            /* 占满整个视口 */
+  display: flex;                            /* 弹性布局 */
+  flex-direction: column;                  /* 改成从上往下排列 */
+  justify-content: flex-start;             /* 顶部对齐 */
+  align-items: stretch;                    /* 横向撑满 */
+  background: linear-gradient(             /* 渐变背景 */
+    to bottom,
+    #e5dff1,  /* 顶部浅紫粉 */
+    #ebeef5,  /* 中间柔灰 */
+    #f4f9fc   /* 底部银蓝灰 */
+  );
+  font-family: "Helvetica Neue", sans-serif;
+  color: #111;
+  box-sizing: border-box;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: 0.6rem 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  background: rgba(255, 255, 255, 0.08);     /* 更浅，更通透 */
+  backdrop-filter: blur(20px) saturate(160%); /* 加强模糊 + 色彩增强 */
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  
+  border-top: 1px solid rgba(255, 255, 255, 0.2); /* 细边框增强卡片感 */
+  border-radius: 1rem 1rem 0 0;
+  box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.15);    /* 更柔更深的上阴影 */
+  z-index: 9999;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  font-size: 0.7rem;
+  color: #000;                              /* 黑色字体，高级感 */
+  transition: color 0.2s ease;
+}
+
+.nav-item i {
+  font-size: 1.2rem;                        /* 图标大小 */
+  margin-bottom: 4px;
+}
+
+.nav-item:hover {
+  color: #007aff;                           /* 鼠标悬停时变蓝 */
+}
+
+.nav-item {
+  display: flex;                         /* 垂直排列图标和文字 */
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  font-size: 0.72rem;
+  color: rgba(30, 30, 30, 0.85);         /* 默认字体是深灰色 */
+  transition: color 0.3s ease;
+}
+
+.nav-item i {
+  font-size: 1.25rem;                    /* 图标大小 */
+  margin-bottom: 4px;
+  opacity: 0.9;                          /* 默认图标不完全不透明 */
+}
+
+/* ✅ 当前激活的按钮：图标和文字都高亮变蓝 */
+.nav-item.active {
+  color: #007aff;                        /* 字体变蓝 */
+}
+
+.nav-item.active i {
+  opacity: 1;                            /* 图标更亮 */
+}
