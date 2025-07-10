@@ -38,16 +38,18 @@
   flex-shrink: 0;
 }
 
-/* 语言图标 */
 .language-icon {
-  all: unset;                                /* ✅ 清除 button 默认所有样式 */
-  cursor: pointer;                           /* ✅ 鼠标悬停变手型 */
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
   height: 25px;
   width: 25px;
-  display: flex;                             /* ✅ 让 SVG 居中显示 */
+  display: inline-flex;          /* ✅ 显示为内联图标 */
   align-items: center;
   justify-content: center;
   color: #0a67ca;
+  cursor: pointer;
   flex-shrink: 0;
 }
 
