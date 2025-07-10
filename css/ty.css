@@ -1,21 +1,23 @@
-body {
-  margin: 0;                                /* 去掉默认边距 */
-  padding: 0;                               /* 去掉默认内边距 */
-  min-height: 100vh;                            /* ✅ 让内容能撑开页面高度 */
-  height: auto;                            /* ✅ 允许自动增长 */
-  display: flex;                            /* 弹性布局 */
-  flex-direction: column;                  /* 改成从上往下排列 */
-  justify-content: flex-start;             /* 顶部对齐 */
-  align-items: stretch;                    /* 横向撑满 */
-  background: linear-gradient(             /* 渐变背景 */
-    to bottom,
-    #e5dff1,  /* 顶部浅紫粉 */
-    #ebeef5,  /* 中间柔灰 */
-    #f4f9fc   /* 底部银蓝灰 */
-  );
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;                           /* 强制整个屏幕高度（移动端） */
+  overflow: hidden;                        /* 🚫 禁止页面整体滚动 */
+  touch-action: none;                      /* 🚫 禁止默认滑动手势（包括上下滑） */
+  overscroll-behavior: none;               /* 🚫 禁止iOS/安卓回弹效果 */
   font-family: "Helvetica Neue", sans-serif;
   color: #111;
   box-sizing: border-box;
+  background: linear-gradient(
+    to bottom,
+    #e5dff1,
+    #ebeef5,
+    #f4f9fc
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
 }
 
 .bottom-nav {
