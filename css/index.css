@@ -45,12 +45,12 @@
   margin: 0;
   height: 25px;
   width: 25px;
-  display: inline-flex;          /* ✅ 显示为内联图标 */
+  display: flex;
   align-items: center;
   justify-content: center;
   color: #0a67ca;
-  cursor: pointer;
   flex-shrink: 0;
+  z-index: 9999;
 }
 
 .language-menu {
