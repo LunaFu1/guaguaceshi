@@ -1,10 +1,13 @@
 html, body {
   margin: 0;
   padding: 0;
-  height: 100vh;                           /* 强制整个屏幕高度（移动端） */
-  overflow: hidden;                        /* 🚫 禁止页面整体滚动 */
-  touch-action: none;                      /* 🚫 禁止默认滑动手势（包括上下滑） */
-  overscroll-behavior: none;               /* 🚫 禁止iOS/安卓回弹效果 */
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;                        /* 🚫 页面整体不滚动 */
+  overflow-x: hidden;                     /* 🚫 禁止横向滚动 */
+  touch-action: pan-y;                   /* ✅ 允许竖滑，禁止横滑 */
+  overscroll-behavior: none;             /* 🚫 防止橡皮筋 */
+
   font-family: "Helvetica Neue", sans-serif;
   color: #111;
   box-sizing: border-box;
@@ -14,6 +17,7 @@ html, body {
     #ebeef5,
     #f4f9fc
   );
+
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

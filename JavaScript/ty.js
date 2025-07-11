@@ -44,3 +44,15 @@ fetch("html/ty.html")
       });
     });
   });
+
+// ✅ 监听整个页面的 touchmove 事件
+document.addEventListener('touchmove', function (e) {
+  if (!e.target.closest('.scrollable')) {
+    e.preventDefault(); // ❌ 如果不是 scrollable 区域，就禁止滑动
+  }
+}, { passive: false });
+
+// ✅ 阻止 iOS 双指放大页面
+document.addEventListener('gesturestart', function (e) {
+  e.preventDefault();
+});
