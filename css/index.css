@@ -315,25 +315,28 @@
 /* 卡片区域布局不变 */
 .coin-grid {
   display: flex;
-  gap: 12px;
-  padding: 0 8px; /* ✅ 左右各留8px */
+  gap: 5px;                        /* 卡片间隔 */
+  padding: 0 5px;                   /* 两侧留白 */
+  box-sizing: border-box;
+  overflow-x: hidden;               /* 禁止横滑 */
 }
 
 /* 每张币种卡片 */
 .coin-card {
-  flex: 1;
+  flex: 1 1 calc((100% - 24px) / 3); /* ✅ 3张卡 + 2个gap，自动撑满 */
   height: 100px;
   border-radius: 16px;
   padding: 12px 14px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;               /* ✅ 改这里 */
+  justify-content: flex-start;
   background: #ffffff;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
   color: #111;
   box-sizing: border-box;
   transition: transform 0.3s ease;
-  position: relative;                        /* ✅ 加这里 */
+  position: relative;
+  min-width: 0;                     /* ✅ 防止在某些浏览器撕裂换行 */
 }
 
 .coin-center {

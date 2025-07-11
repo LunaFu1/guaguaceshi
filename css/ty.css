@@ -96,3 +96,7 @@ html, body {
   -webkit-overflow-scrolling: touch;   /* iOS 惯性滚动支持 */
   flex: 1;                              /* 如果你用 flex 布局，允许它撑满剩余空间 */
 }
+
+* {
+  outline: 1px solid red;      /* ✅ 显示所有元素边框 */
+}
