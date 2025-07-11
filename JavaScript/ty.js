@@ -1,49 +1,58 @@
 // ✅ 加载底部导航 HTML
 fetch("html/ty.html")
-  .then(res => res.text())                                // 请求导航 HTML 文件内容
+  .then(res => res.text()) // 请求导航 HTML 文件内容
   .then(html => {
-    document.getElementById("bottom-nav-placeholder").innerHTML = html;  // 插入到页面中
+    document.getElementById("bottom-nav-placeholder").innerHTML = html; // 插入到底部
 
-    // ✅ 页面加载完成后执行高亮逻辑
-    const currentUrl = window.location.href;                             // 获取当前完整地址
-    const navLinks = document.querySelectorAll('.nav-item');            // 获取所有导航按钮
+    highlightCurrentNav(); // ✅ 首页第一次加载时执行一次高亮
 
-    navLinks.forEach(link => {
-      const linkUrl = new URL(link.getAttribute('href'), window.location.origin).href; // 生成完整地址
-      if (currentUrl === linkUrl) {
-        link.classList.add('active');                                  // 匹配则添加高亮类
-      }
-    });
+    const navLinks = document.querySelectorAll('.nav-item'); // 获取所有导航按钮
 
     // ✅ 给每个导航按钮添加无刷新点击事件
     navLinks.forEach(link => {
       link.addEventListener('click', event => {
-        event.preventDefault();                                       // 阻止默认跳转行为
-        const href = link.getAttribute('href');                        // 获取目标地址
+        event.preventDefault(); // 阻止默认跳转行为
+        const href = link.getAttribute('href'); // 获取目标地址
 
         fetch(href)
-          .then(res => res.text())                                     // 请求目标页面
+          .then(res => res.text()) // 请求目标页面
           .then(html => {
-            const parser = new DOMParser();                             // 创建 HTML 解析器
-            const doc = parser.parseFromString(html, 'text/html');     // 解析返回内容
-            const newMain = doc.querySelector('main');                 // 提取 <main> 内容
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const newMain = doc.querySelector('main');
             const currentMain = document.querySelector('main');
 
             if (newMain && currentMain) {
-              currentMain.innerHTML = newMain.innerHTML;              // 替换当前页面主内容
-              history.pushState(null, '', href);                       // 更新地址栏不刷新页面
+              currentMain.innerHTML = newMain.innerHTML;
+              history.pushState(null, '', href); // 替换地址栏
 
-              // ✅ 重新设置高亮（清除旧的，设置新的）
-              navLinks.forEach(nav => nav.classList.remove('active'));
-              link.classList.add('active');
+              highlightCurrentNav(); // ✅ 切换后也重新高亮
             }
           })
           .catch(error => {
-            console.error('页面加载失败：', error);                     // 错误处理
+            console.error('页面加载失败：', error);
           });
       });
     });
   });
+
+// ✅ 当前导航高亮逻辑（兼容 index.html、/、完整路径）
+function highlightCurrentNav() {
+  const currentUrl = window.location.href;
+  const navLinks = document.querySelectorAll('.nav-item');
+
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    const linkUrl = new URL(href, window.location.origin).href;
+
+    const isActive =
+      currentUrl === linkUrl ||
+      currentUrl.endsWith(href) ||
+      (href.endsWith("index.html") && (currentUrl.endsWith("/") || currentUrl === window.location.origin + "/"));
+
+    link.classList.toggle('active', isActive);
+  });
+}
 
 // ✅ 监听整个页面的 touchmove 事件
 document.addEventListener('touchmove', function (e) {

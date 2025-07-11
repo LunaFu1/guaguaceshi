@@ -325,13 +325,13 @@
 .coin-card {
   flex: 1 1 calc((100% - 24px) / 3); /* ✅ 3张卡 + 2个gap，自动撑满 */
   height: 100px;
-  border-radius: 16px;
+  border-radius: 19px;
   padding: 12px 14px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  background: #ffffff;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  background: #885353;
+  box-shadow: 0 3px 3px rgba(5, 2, 2, 0.1);
   color: #111;
   box-sizing: border-box;
   transition: transform 0.3s ease;
