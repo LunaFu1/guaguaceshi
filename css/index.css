@@ -396,13 +396,14 @@
   opacity: 0.95;
 }
 
+/* 主题文字 */
 .coin-section-title {
   font-size: 18px;
   font-weight: 700;
   color: #111111;
   margin-bottom: 16px;
   letter-spacing: 0.3px;
-  padding-left: 12px;
+  padding-left: 20px;
   position: relative;
   line-height: 1.2;
 }
@@ -411,7 +412,7 @@
 .coin-section-title::before {
   content: "";
   position: absolute;
-  left: 0;
+  left: 11px;
   top: 2px;
   width: 4px;
   height: 18px;
@@ -431,4 +432,141 @@
 
 .bg-trump {
   background: linear-gradient(135deg, #ebeef5, #66a6ff);
+}
+
+
+/* 热门币种整体模块 */
+.hot-token-section {
+  margin: 24px 12px 80px;
+}
+
+/* 标题加粗+左侧高光条 */
+.hot-token-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111111;
+  margin-bottom: 16px;
+  letter-spacing: 0.3px;
+  padding-left: 10px;
+  position: relative;
+  line-height: 1.2;
+}
+
+.hot-token-title::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 0;
+  width: 4px;
+  height: 18px;
+  border-radius: 2px;
+  background: linear-gradient(to bottom, #fc466b, #3f5efb);
+}
+
+/* 币种列表 */
+.hot-token-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* 卡片变厚，内边距更宽松，圆角加大 */
+.hot-token-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 16px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* 图标更大 */
+.hot-token-icon {
+  width: 28px;
+  height: 28px;
+  margin-right: 12px;
+}
+
+/* 名字字体加粗加大 */
+.hot-token-name {
+  flex: 1;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* 当前价格 */
+.hot-token-price {
+  font-size: 15px;
+  font-weight: bold;
+  color: #222;
+  min-width: 80px;
+  text-align: right;
+}
+
+/* 移动端按压感 */
+.hot-token-row {
+  transition: transform 0.2s ease;
+  cursor: pointer; /* 鼠标悬停时显示手型 */
+}
+
+.hot-token-row:active {
+  transform: scale(0.97);
+}
+
+/* 涨跌幅，字体更明显 */
+.hot-token-change {
+  font-size: 15px;
+  font-weight: 700;
+  min-width: 70px;
+  text-align: right;
+}
+
+/* 涨跌颜色 */
+.hot-token-change.up {
+  color: #29c180;
+}
+.hot-token-change.down {
+  color: #f75c5c;
+}
+
+/* BTC：亮金橙 */
+.hot-btc {
+  background: linear-gradient(135deg, #f9f5ef, #f7931a1a); /* 金色淡化 */
+}
+
+/* ETH：冷银灰蓝 */
+.hot-eth {
+  background: linear-gradient(135deg, #f4f8fb, #3c3c3d1f); /* 银黑主调 */
+}
+
+/* SOL：蓝紫渐变 */
+.hot-sol {
+  background: linear-gradient(135deg, #f1f5fb, #9945ff1a); /* 紫蓝光感 */
+}
+
+/* DOGE：卡通黄橙 */
+.hot-doge {
+  background: linear-gradient(135deg, #fff9ed, #c2a6332b); /* 狗狗币金黄 */
+}
+
+/* BNB：亮黄金色 */
+.hot-bnb {
+  background: linear-gradient(135deg, #fffcf0, #f3ba2f2a); /* Binance黄 */
+}
+
+/* BCH：绿色 */
+.hot-bch {
+  background: linear-gradient(135deg, #f2fbf6, #8dc3512a); /* 浅绿柔和 */
+}
+
+/* ADA：宝蓝 + 白灰 */
+.hot-ada {
+  background: linear-gradient(135deg, #f4f8ff, #0033ad20); /* 深蓝科技感 */
+}
+
+/* XRP：黑银极简 */
+.hot-xrp {
+  background: linear-gradient(135deg, #f7f7f7, #00000018); /* 黑白科技极简 */
 }
