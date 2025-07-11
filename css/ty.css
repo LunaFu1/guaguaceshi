@@ -84,3 +84,11 @@ html, body {
 .nav-item.active i {
   opacity: 1;                            /* 图标更亮 */
 }
+
+
+/* 滚动区域样式 */
+.scrollable {
+  overflow-y: auto;                     /* 垂直方向可滚动 */
+  -webkit-overflow-scrolling: touch;   /* iOS 惯性滚动支持 */
+  flex: 1;                              /* 如果你用 flex 布局，允许它撑满剩余空间 */
+}
