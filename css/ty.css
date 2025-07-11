@@ -92,11 +92,8 @@ html, body {
 
 /* 滚动区域样式 */
 .scrollable {
-  overflow-y: auto;                     /* 垂直方向可滚动 */
-  -webkit-overflow-scrolling: touch;   /* iOS 惯性滚动支持 */
-  flex: 1;                              /* 如果你用 flex 布局，允许它撑满剩余空间 */
-}
-
-* {
-  outline: 1px solid red;      /* ✅ 显示所有元素边框 */
+  overflow-y: auto;                    /* ✅ 允许垂直滚动 */
+  -webkit-overflow-scrolling: touch;  /* ✅ iOS 惯性滚动 */
+  flex: 1;                             /* ✅ 如果你用 flex 布局 */
+  height: 100%;                        /* ✅ 必须有高度 */
 }

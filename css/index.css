@@ -316,7 +316,7 @@
 .coin-grid {
   display: flex;
   gap: 5px;                        /* 卡片间隔 */
-  padding: 0 5px;                   /* 两侧留白 */
+  padding: 0 7px;                   /* 两侧留白 */
   box-sizing: border-box;
   overflow-x: hidden;               /* 禁止横滑 */
 }
