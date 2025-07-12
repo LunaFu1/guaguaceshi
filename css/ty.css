@@ -3,11 +3,10 @@ html, body {
   padding: 0;
   height: 100vh;
   width: 100vw;
-  overflow: hidden;                        /* 🚫 页面整体不滚动 */
-  overflow-x: hidden;                     /* 🚫 禁止横向滚动 */
-  touch-action: pan-y;                   /* ✅ 允许竖滑，禁止横滑 */
-  overscroll-behavior: none;             /* 🚫 防止橡皮筋 */
-
+  overflow: hidden;
+  overflow-x: hidden;
+  touch-action: pan-y;
+  overscroll-behavior: none;
   font-family: "Helvetica Neue", sans-serif;
   color: #111;
   box-sizing: border-box;
@@ -17,85 +16,133 @@ html, body {
     #ebeef5,
     #f4f9fc
   );
-
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
 }
 
+/* ===== 内容可滚动区 ===== */
+.scrollable {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  flex: 1;
+  height: 100%;
+  padding-bottom: 70px; /* 给底部悬浮卡片足够空间 */
+}
+
+/* ======= 底部导航栏悬浮卡片 ======= */
 .bottom-nav {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  padding: 0.6rem 0;
+  left: 0;            /* 直接靠左 */
+  right: 0;           /* 直接靠右 */
+  bottom: 0px;        /* 彻底贴底 */
+  margin: 0;          /* 没有 auto，彻底无留白 */
+  width: 100vw;       /* 全宽 */
+  max-width: 100vw;   /* 超大屏无白边 */
+  height: 58px;       /* 保持纤薄 */
   display: flex;
   justify-content: space-around;
   align-items: center;
-
-  background: rgba(255, 255, 255, 0.08);     /* 更浅，更通透 */
-  backdrop-filter: blur(20px) saturate(160%); /* 加强模糊 + 色彩增强 */
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
-  
-  border-top: 1px solid rgba(255, 255, 255, 0.2); /* 细边框增强卡片感 */
-  border-radius: 1rem 1rem 0 0;
-  box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.15);    /* 更柔更深的上阴影 */
-  z-index: 9999;
+  background: rgba(255,255,255,0.19);
+  backdrop-filter: blur(14px) saturate(170%);
+  -webkit-backdrop-filter: blur(14px) saturate(170%);
+  border-top: 1px solid rgba(255,255,255,0.14);
+  border-radius: 10px 10px 0 0;    /* 可适当缩小，避免视觉留白 */
+  box-shadow: 0 1.5px 6px rgba(0,0,0,0.11);
+  z-index: 100;
+  transition: all 0.18s cubic-bezier(.5,1.4,.3,1);
+  overflow: visible;
 }
 
+/* ===== 普通导航按钮 ===== */
 .nav-item {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-size: 13px;
+  color: rgba(30, 30, 30, 0.86);
   text-decoration: none;
-  font-size: 0.7rem;
-  color: #000;                              /* 黑色字体，高级感 */
-  transition: color 0.2s ease;
+  transition: color 0.3s;
+  z-index: 2;
+  position: relative;
 }
-
-.nav-item i {
-  font-size: 1.2rem;                        /* 图标大小 */
-  margin-bottom: 4px;
+.nav-item svg {
+  width: 20px;
+  height: 20px;
+  fill: #2c54ce;
+  opacity: 0.83;
+  transition: fill 0.25s, opacity 0.25s;
 }
-
-.nav-item:hover {
-  color: #007aff;                           /* 鼠标悬停时变蓝 */
+.nav-item:hover svg,
+.nav-item.active svg {
+  fill: #007aff;
+  opacity: 1;
 }
-
-.nav-item {
-  display: flex;                         /* 垂直排列图标和文字 */
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-  font-size: 0.72rem;
-  color: rgba(30, 30, 30, 0.85);         /* 默认字体是深灰色 */
-  transition: color 0.3s ease;
-}
-
-.nav-item i {
-  font-size: 1.25rem;                    /* 图标大小 */
-  margin-bottom: 4px;
-  opacity: 0.9;                          /* 默认图标不完全不透明 */
-}
-
-/* ✅ 当前激活的按钮：图标和文字都高亮变蓝 */
+.nav-item:hover,
 .nav-item.active {
-  color: #007aff;                        /* 字体变蓝 */
+  color: #007aff;
 }
 
-.nav-item.active i {
-  opacity: 1;                            /* 图标更亮 */
+/* ====== 中间悬浮交易按钮 ====== */
+.trade-icon-wrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -62%); /* 精准浮出导航栏上沿 */
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.trade-icon {
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, #00ffc6, #0077ff);
+  border-radius: 50%;
+  box-shadow: 0 2px 12px rgba(0,255,198,0.16);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.15s;
+  border: 2.5px solid #fff;
+}
+.trade-icon:hover {
+  transform: scale(1.10);
+}
+.trade-icon svg {
+  width: 17px;
+  height: 17px;
+  fill: white;
 }
 
-
-/* 滚动区域样式 */
-.scrollable {
-  overflow-y: auto;                    /* ✅ 允许垂直滚动 */
-  -webkit-overflow-scrolling: touch;  /* ✅ iOS 惯性滚动 */
-  flex: 1;                             /* ✅ 如果你用 flex 布局 */
-  height: 100%;                        /* ✅ 必须有高度 */
-  padding-bottom: 145px;
-}
+/* ====== 响应式/移动端适配 ====== */
+@media screen and (max-width: 480px) {
+  .bottom-nav {
+    width: 99vw;
+    max-width: 100vw;
+    height: 43px;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+    bottom: 1.2vw;
+  }
+  .trade-icon-wrapper {
+    transform: translate(-50%, -69%);
+  }
+  .trade-icon {
+    width: 28px;
+    height: 28px;
+    border-width: 2px;
+  }
+  .trade-icon svg {
+    width: 13px;
+    height: 13px;
+  }
+  .nav-item svg {
+    width: 16px;
+    height: 16px;
+  }
+} 
 

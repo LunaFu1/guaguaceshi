@@ -1,52 +1,46 @@
-/* ===== 页面整体设置：铺满屏幕但保留一点视觉边距 ===== */
+/* ===== 页面整体设置 ===== */
 html, body {
   margin: 0;
-  padding: 0 8px;                        /* ✅ 左右各留 8px 空隙 */
-  min-height: 100vh;                     /* ✅ 高度自适应，键盘弹出也不跳 */
+  padding: 0 8px;
+  min-height: 100vh;
   width: 100%;
   font-family: "Helvetica Neue", sans-serif;
   background: linear-gradient(to bottom right, #eef3f9, #ffffff);
-
   display: flex;
   flex-direction: column;
   justify-content: stretch;
   align-items: stretch;
-
   overflow-x: hidden;
   overflow-y: auto;
-
   touch-action: pan-y;
   overscroll-behavior: none;
-
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
 
-/* ===== 所有元素遵循边界盒子模型，避免溢出 ===== */
-*,
-*::before,
-*::after {
+/* ===== 边界盒子模型，避免溢出 ===== */
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
-/* ===== 登录容器，撑满屏幕但上下保留一点空隙 ===== */
+/* ===== 容器卡片区域 ===== */
 .login-container {
   width: 100%;
   max-width: 100%;
-  height: calc(100vh - 16px);            /* ✅ 减去上下各 8px 空隙 */
-  margin: 8px 0;                         /* ✅ 上下各留 8px，呼吸感 */
+  height: calc(100vh - 16px);
+  margin: 8px 0;
   background: white;
-  border-radius: 12px;                   /* ✅ 稍微圆角，贴边但不生硬 */
-  padding: 16px;                         /* ✅ 内容与边缘的缓冲空间 */
+  border-radius: 12px;
+  padding: 16px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  position: relative;
 }
 
-/* ===== 顶部返回与语言按钮 ===== */
+/* ===== 顶部按钮区域（返回、语言） ===== */
 .top-icons {
   display: flex;
   justify-content: space-between;
@@ -73,16 +67,23 @@ html, body {
   margin-bottom: 16px;
 }
 
-/* ===== 注册引导区域 ===== */
+/* ===== 注册引导 / 切换登录方式区域 ===== */
 .register-tip {
   font-size: 14px;
   margin-bottom: 20px;
   color: #333;
 }
-
 .register-tip a {
   color: #007aff;
   text-decoration: none;
+}
+
+.bottom-options {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #007aff;
+  margin: 12px 0 20px;
 }
 
 /* ===== 输入框区域 ===== */
@@ -94,14 +95,18 @@ html, body {
 .input-group input {
   width: 100%;
   padding: 12px 16px;
-  font-size: 14px;
+  font-size: 16px;
   border: none;
   border-radius: 999px;
   background-color: #f1f3f5;
   outline: none;
 }
 
-/* ===== 眼睛图标（显示/隐藏密码） ===== */
+input, textarea {
+  font-size: 16px;
+}
+
+/* ===== 眼睛图标（密码切换） ===== */
 .eye-icon {
   position: absolute;
   top: 50%;
@@ -112,29 +117,40 @@ html, body {
   cursor: pointer;
 }
 
-/* ===== 验证码区域 ===== */
+/* ===== 图片验证码区域 ===== */
 .captcha-group {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-
 .captcha-group img {
   height: 38px;
   border-radius: 12px;
   cursor: pointer;
 }
 
-/* ===== 底部功能（用户名登录/忘记密码） ===== */
-.bottom-options {
+/* ===== 邮箱验证码 + 按钮（横向） ===== */
+.email-code-group {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.email-code-group input {
+  flex: 1;
+}
+.email-code-group button {
+  white-space: nowrap;
+  padding: 10px 14px;
   font-size: 14px;
-  color: #007aff;
-  margin: 12px 0 20px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-/* ===== 登录按钮样式 ===== */
+/* ===== 主按钮（登录/注册/提交） ===== */
 .login-btn {
   width: 100%;
   padding: 14px;
@@ -147,47 +163,11 @@ html, body {
   cursor: pointer;
 }
 
-/* 登录容器必须加相对定位，供语言图标绝对定位参考 */
-.login-container {
-  position: relative;               /* ✅ 关键：语言图标才能定位在右上角 */
-  /* 其他样式保持不变 */
-}
-
-
-/* 返回按钮：左上角固定，样式统一 */
+/* ===== 返回按钮样式（左上角） ===== */
 .back-icon {
-  position: absolute;               /* ⬅️ 固定在容器左上角 */
+  position: absolute;
   top: 12px;
   left: 12px;
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-  height: 25px;
-  width: 25px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #0a67ca;                   /* ✅ 和语言按钮颜色一致 */
-  cursor: pointer;
-  flex-shrink: 0;
-  z-index: 1000;
-}
-
-.back-icon svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-  stroke: currentColor;             /* ✅ 继承颜色 */
-  stroke-width: 4; /* ✅ 加粗线条，默认1.5，可调节 */
-}
-
-
-/* 语言图标固定在容器右上角 */
-.language-icon {
-  position: absolute;              /* ⬅️ 固定在容器内部右上角 */
-  top: 12px;                       /* ⬅️ 距离容器顶部 */
-  right: 12px;                     /* ⬅️ 距离容器右边 */
   background: none;
   border: none;
   padding: 0;
@@ -202,17 +182,44 @@ html, body {
   flex-shrink: 0;
   z-index: 1000;
 }
+.back-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  stroke: currentColor;
+  stroke-width: 4;
+}
 
+/* ===== 语言切换按钮样式（右上角） ===== */
+.language-icon {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  height: 25px;
+  width: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0a67ca;
+  cursor: pointer;
+  flex-shrink: 0;
+  z-index: 1000;
+}
 .language-icon svg {
   width: 100%;
   height: 100%;
   display: block;
-  fill: currentColor; /* 保底保障 fill 正常 */
+  fill: currentColor;
 }
 
+/* ===== 语言选择菜单 ===== */
 .language-menu {
   position: absolute;
-  top: 54px;                      /* ⬅️ 可微调：菜单显示在图标下方 */
+  top: 54px;
   right: 16px;
   background: #ffffff;
   border-radius: 10px;
@@ -222,7 +229,6 @@ html, body {
   min-width: 130px;
   font-size: 14px;
 }
-
 .lang-item {
   padding: 10px 16px;
   cursor: pointer;
@@ -230,15 +236,12 @@ html, body {
   white-space: nowrap;
   transition: background-color 0.2s ease;
 }
-
 .lang-item:hover {
   background-color: #f0f4fb;
 }
-
 .hidden {
   display: none;
 }
-
 .flag-icon {
   width: 20px;
   height: 14px;
@@ -249,7 +252,82 @@ html, body {
   box-shadow: 0 1px 3px rgba(0,0,0,0.15);
 }
 
-/* 内容整体区域往下偏移 */
+/* ===== 内容整体下移一点（避免顶头） ===== */
 .content {
-  margin-top: 70px; /* ✅ 你可以根据视觉需要调成 48px / 56px */
+  margin-top: 70px;
+}
+
+.agreement-check {
+  font-size: 13px;
+  color: #555;
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+.agreement-check input[type="checkbox"] {
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.policy-link {
+  color: #007aff;
+  text-decoration: none;
+  margin: 0 4px;
+}
+
+.policy-link:hover {
+  text-decoration: underline;
+}
+
+/* ===== 密码强度条样式 ===== */
+.password-strength-bar {
+  display: flex;              /* 横排排列能量格 */
+  align-items: center;        /* 垂直居中 */
+  width: 95%;                /* 与输入框100%齐平 */
+  gap: 0;                     /* 不留空 */
+  margin-top: -6px;           /* 上移贴近输入框 */
+  margin-bottom: 16px;        /* 下方留空 */
+  height: 10px;               /* 能量条高度 */
+  position: relative;         /* 相对定位 */
+  margin: -6px auto 16px auto;
+}
+
+.strength-block {
+  flex: 1;                    /* 三格均分宽度 */
+  height: 100%;               /* 填满高度 */
+  margin-right: 5px;          /* 格间距 */
+  border-radius: 100px;         /* 圆角，类似胶囊 */
+  background: #e0e0e0;        /* 默认灰色 */
+  transition: background 0.2s;
+}
+.strength-block:last-child {
+  margin-right: 0;            /* 最后一格无右间距 */
+}
+
+/* ========== Toast中间弹窗提示样式 ========== */
+.toast {
+  position: fixed;                    /* 固定定位，保证始终居中 */
+  left: 50%;
+  top: 50%;
+  z-index: 9999;                      /* 显示在最上层 */
+  transform: translate(-50%, -50%);   /* 精准居中 */
+  min-width: 180px;
+  max-width: 80vw;
+  background: rgba(34, 34, 34, 0.93); /* 半透明黑底 */
+  color: #fff;                        /* 白字 */
+  font-size: 16px;
+  padding: 18px 28px;                 /* 内边距，圆角 */
+  border-radius: 14px;
+  box-shadow: 0 6px 32px rgba(0,0,0,0.20);
+  text-align: center;
+  transition: opacity 0.3s;
+  opacity: 0;                         /* 初始透明 */
+  pointer-events: none;               /* 鼠标穿透 */
+}
+.toast.show {
+  opacity: 1;                         /* 显示时不透明 */
+  pointer-events: auto;
+}
+.toast.hidden {
+  display: none;                      /* 隐藏时彻底消失 */
 }

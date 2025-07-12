@@ -5,7 +5,7 @@
   padding: 12px 20px;
   margin: 10px 15px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  display: flex;
+  display: flex ;;
   align-items: center;
   box-sizing: border-box;
 }
@@ -570,3 +570,240 @@
 .hot-xrp {
   background: linear-gradient(135deg, #f7f7f7, #00000018); /* 黑白科技极简 */
 }
+
+
+/* ========== 首页顶部栏：左 logo + 右公告入口 ========== */
+
+.home-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;                   /* 稍大内边距更舒适 */
+  background: transparent;
+  margin-top: 1px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* 微弱阴影 */
+}
+
+/* 左侧 LOGO 区域 */
+.topbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.topbar-logo {
+  height: 35px;
+  object-fit: contain;
+}
+
+/* ========== 首页公告入口：右上角 ========== */
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* 🔧 间距稍大，呼吸感更好 */
+  cursor: pointer;
+  padding-right: 6px; /* 🔧 不紧贴边缘 */
+}
+
+/* 公告图标：柔和科技蓝 + 微光 */
+.notice-icon {
+  width: 20px;
+  height: 20px;
+  color: #28C0DC; /* 🔧 与 logo 蓝一致 */
+  filter: drop-shadow(0 0 3px rgba(40, 192, 220, 0.3)); /* 🔆 柔和光感 */
+}
+
+/* 公告文字样式 */
+.notice-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #223344; /* 🔧 深蓝灰，沉稳聚焦 */
+  letter-spacing: 0.4px;
+}
+
+
+
+
+
+
+/* ========== 首页资产总览卡片区域 ========== */
+.asset-summary-card {
+  background: linear-gradient(120deg, #eaf1ffcc 85%, #e4f3ff88 100%); /* 更柔渐变 + 透明感 */
+  border-radius: 20px;
+  padding: 22px 18px 20px 18px;  /* 上左右下 */
+  margin: 14px 14px 16px 14px;
+  box-shadow: 0 4px 18px 1px rgba(46,94,202,0.07), 0 1.5px 7px rgba(0,153,255,0.10);
+  border: 1.5px solid #d1e7ff55; /* 微光蓝边框 */
+  backdrop-filter: blur(3px);
+  position: relative;
+  overflow: hidden;
+  /* 让资产区和按钮区风格融合 */
+}
+
+/* 标题文字：资产总估值 */
+.asset-summary-top {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2562a3;
+  margin-bottom: 6px;
+  letter-spacing: 0.3px;
+}
+
+/* 数字金额 */
+.asset-balance {
+  font-size: 2.1rem;
+  font-weight: 700;
+  margin-top: 0;
+  color: #0da6fd;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 2px 6px rgba(36, 148, 245, 0.07));
+  font-family: "DIN Alternate", "Helvetica Neue", Arial, sans-serif;
+  /* 气质更金融/科技 */
+}
+
+/* ========== 卡片内充币 / 提币按钮 ========== */
+.asset-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  gap: 12px;
+}
+
+.asset-actions button {
+  flex: 1 1 0;
+  padding: 11px 0;
+  border-radius: 32px;
+  background: linear-gradient(90deg, #00cfff 50%, #0073ff 100%);
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+  border: none;
+  box-shadow: 0 3px 12px rgba(0,178,255,0.09);
+  transition: transform 0.13s, box-shadow 0.22s;
+  cursor: pointer;
+  letter-spacing: 0.2px;
+  outline: none;
+}
+.asset-actions button:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 6px 16px rgba(13,166,253,0.16);
+  background: linear-gradient(90deg, #02e4ff 30%, #489eff 100%);
+}
+
+/* ========== 卡片下方四个功能按钮 ========== */
+.asset-tools {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin: 16px 10px 0 10px;
+}
+
+.asset-tools .tool-btn {
+  background: linear-gradient(110deg, #f5faffcc 85%, #e2ecff88 100%);
+  border-radius: 17px;
+  padding: 12px 0 8px 0;
+  text-align: center;
+  color: #2562a3;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 1px 5px rgba(15,119,255,0.06);
+  transition: box-shadow 0.2s, transform 0.15s;
+  border: 1px solid #eaf4ffbb;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+.asset-tools .tool-btn:hover {
+  box-shadow: 0 3px 14px rgba(46,114,255,0.13);
+  background: linear-gradient(110deg, #e8f6ff 70%, #e0e9ff 100%);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.asset-tools .tool-btn svg {
+  width: 25px;
+  height: 25px;
+  margin-bottom: 4px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  fill: #007aff;        /* 让普通SVG都变主色蓝 */
+  /* 不加 stroke: none; 不动你的转换按钮 */
+}
+
+/* 如果想让最后一个“退出”按钮为红色，可以这样单独写 */
+.asset-tools .tool-btn:last-child svg {
+  fill: #fe6161;
+}
+
+.asset-tools .tool-btn:nth-child(2) svg {
+  fill: none !important;
+  stroke: #007aff !important;
+}
+
+/* 功能按钮文字 */
+.asset-tools .tool-btn div {
+  margin-top: 2px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #2562a3;
+  letter-spacing: 0.03em;
+}
+
+/* 响应式优化，手机小屏幕调整 */
+@media (max-width: 480px) {
+  .asset-summary-card {
+    padding: 15px 6px 15px 6px;
+    border-radius: 14px;
+    margin: 10px 4px 10px 4px;
+  }
+  .asset-balance {
+    font-size: 1.3rem;
+  }
+  .asset-actions button {
+    font-size: 13px;
+    border-radius: 18px;
+    padding: 9px 0;
+  }
+  .asset-tools {
+    gap: 8px;
+    margin: 14px 0 0 0;
+  }
+  .asset-tools .tool-btn {
+    padding: 10px 0 7px 0;
+    border-radius: 13px;
+    font-size: 12px;
+  }
+  .asset-tools .tool-btn svg {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 2px;
+  }
+  .asset-tools .tool-btn div {
+    font-size: 12px;
+  }
+}
+
+
+.asset-summary-card {
+  position: relative; /* 让右上角按钮能绝对定位！ */
+}
+
+/* 小眼睛按钮右上角悬浮 */
+.eye-btn {
+  position: absolute;
+  top: 10px;    /* 距离卡片顶部距离，可微调 */
+  right: 22px;  /* 距离卡片右边距离，可微调 */
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  opacity: 0.88;
+  transition: opacity 0.15s;
+}
+.eye-btn:hover { opacity: 1; }
+.eye-btn svg { width: 22px; height: 22px; }
+
+

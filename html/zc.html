@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>登录</title>
+  <title>注册</title>
   <link rel="stylesheet" href="../css/dl.css" />
 </head>
 <body>
@@ -12,7 +12,7 @@
 
       <!-- 返回主页按钮 -->
       <button class="back-icon" onclick="window.location.href='../index.html'" aria-label="返回主页">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="4" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
         </svg>
       </button>
@@ -57,36 +57,75 @@
 
       <!-- ✅ 内容整体下移区域 -->
       <div class="content">
-        <div class="title">登陆后更精彩</div>
-        <div class="subtitle">ChainForce期待与你的相遇</div>
-        <div class="register-tip">没有账号，请先进行 <a href="zc.html">注册</a></div>
+        <div class="title">开启你的数字资产之旅</div>
+        <div class="subtitle">欢迎注册 ChainForce</div>
 
+        <!-- 邮箱输入 -->
         <div class="input-group">
-          <input type="text" id="loginInput" placeholder="请输入邮箱" />
+          <input type="email" id="emailInput" placeholder="请输入邮箱" />
         </div>
 
+        <!-- 用户名输入 -->
         <div class="input-group">
-          <input type="password" id="passwordInput" placeholder="请输入密码" />
-          <span class="eye-icon" onclick="togglePassword()">👁️</span>
+          <input type="text" id="usernameInput" placeholder="请输入用户名" />
         </div>
 
+<!-- 密码输入 -->
+<div class="input-group">
+  <input type="password"
+         id="passwordInput"
+         placeholder="请输入密码"
+         oninput="checkPasswordStrengthBar('passwordInput', 'strengthBar1')" />
+  <span class="eye-icon" onclick="togglePassword()">👁️</span>
+</div>
+
+<!-- 能量条，5格（要3格就写3个） -->
+<div class="password-strength-bar" id="strengthBar1">
+  <div class="strength-block"></div>
+  <div class="strength-block"></div>
+  <div class="strength-block"></div>
+</div>
+
+        <!-- 再次确认密码 -->
+        <div class="input-group">
+          <input type="password" id="confirmPasswordInput" placeholder="请再次输入密码" />
+        </div>
+
+
+        <!-- 验证码输入 -->
         <div class="input-group captcha-group">
           <input type="text" placeholder="请输入验证码" />
-          <img id="captchaImage" src="" alt="验证码" onclick="refreshCaptcha()" />
+          <img id="captchaImage" src="" alt="验证码" />
         </div>
 
-        <div class="bottom-options">
-       <span id="switchLogin" onclick="switchLoginMode()">使用用户名登录</span>
-     <span id="goForget">忘记密码</span>
-     </div>
+        <!-- 邀请码（可选） -->
+        <div class="input-group">
+          <input type="text" id="referralCodeInput" placeholder="邀请码（选填）" />
+        </div>
 
-        <button class="login-btn">登录</button>
+<!-- ✅ 协议勾选（点击跳转到独立页面） -->
+<div class="agreement-check">
+  <label>
+    <input type="checkbox" id="agreeCheckbox" />
+    我已阅读并同意 
+<a href="yhxy.html" class="policy-link">《用户协议》</a>
+<a href="yszc.html" class="policy-link">《隐私政策》</a>
+  </label>
+</div>
+
+        <!-- 注册按钮 -->
+        <button class="login-btn">注册</button>
+
+        <!-- ✅ 已有账号提示 -->
+        <div class="register-tip" style="text-align: right; margin-top: 12px;">
+          已有账户？<a href="dl.html">立即登录</a>
+        </div>
       </div>
     </div>
-  </main>
   
-  <div id="toast" class="toast hidden"></div>
-  <div id="bottom-nav-placeholder"></div>
+  </main>
+    <div id="toast" class="toast hidden"></div>
+    <div id="bottom-nav-placeholder"></div>
   <script src="../JavaScript/dl.js"></script>
 </body>
 </html>

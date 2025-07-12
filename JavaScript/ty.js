@@ -1,21 +1,23 @@
 // ✅ 加载底部导航 HTML
 fetch("html/ty.html")
-  .then(res => res.text()) // 请求导航 HTML 文件内容
+  .then(res => res.text())
   .then(html => {
-    document.getElementById("bottom-nav-placeholder").innerHTML = html; // 插入到底部
+    document.getElementById("bottom-nav-placeholder").innerHTML = html;
 
-    highlightCurrentNav(); // ✅ 首页第一次加载时执行一次高亮
+    highlightCurrentNav(); // ✅ 首次加载导航时高亮当前页
 
-    const navLinks = document.querySelectorAll('.nav-item'); // 获取所有导航按钮
+    const navLinks = document.querySelectorAll('.nav-item'); // 获取所有底部按钮
 
-    // ✅ 给每个导航按钮添加无刷新点击事件
+    // ✅ 为每个按钮添加“无刷新页面切换”
     navLinks.forEach(link => {
       link.addEventListener('click', event => {
-        event.preventDefault(); // 阻止默认跳转行为
-        const href = link.getAttribute('href'); // 获取目标地址
+        event.preventDefault(); // 阻止默认跳转
+
+        const href = link.getAttribute('href');
+        if (!href) return;
 
         fetch(href)
-          .then(res => res.text()) // 请求目标页面
+          .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const doc = parser.parseFromString(html, 'text/html');
@@ -24,19 +26,27 @@ fetch("html/ty.html")
 
             if (newMain && currentMain) {
               currentMain.innerHTML = newMain.innerHTML;
-              history.pushState(null, '', href); // 替换地址栏
+              history.pushState(null, '', href);
+              highlightCurrentNav();
 
-              highlightCurrentNav(); // ✅ 切换后也重新高亮
+              // ✅ 🚀 判断是否回到首页，重新识别登录状态
+              if (
+                href.includes("index.html") &&
+                typeof applyLoginStateToHome === "function"
+              ) {
+                applyLoginStateToHome(); // ✅ 首页展示身份状态
+              }
             }
           })
           .catch(error => {
-            console.error('页面加载失败：', error);
+            console.error("页面加载失败：", error);
           });
       });
     });
   });
 
-// ✅ 当前导航高亮逻辑（兼容 index.html、/、完整路径）
+
+// ✅ 当前导航高亮逻辑（支持 index.html、/、完整路径）
 function highlightCurrentNav() {
   const currentUrl = window.location.href;
   const navLinks = document.querySelectorAll('.nav-item');
@@ -48,17 +58,19 @@ function highlightCurrentNav() {
     const isActive =
       currentUrl === linkUrl ||
       currentUrl.endsWith(href) ||
-      (href.endsWith("index.html") && (currentUrl.endsWith("/") || currentUrl === window.location.origin + "/"));
+      (href.endsWith("index.html") &&
+        (currentUrl.endsWith("/") || currentUrl === window.location.origin + "/"));
 
     link.classList.toggle('active', isActive);
   });
 }
 
-// ✅ 监听整个页面的 touchmove 事件
+
+// ✅ 禁止页面非内容区滑动，避免穿透
 document.addEventListener('touchmove', function (e) {
   const scrollZone = e.target.closest('.scrollable');
   if (scrollZone && scrollZone.scrollHeight > scrollZone.clientHeight) {
-    return; // ✅ 放行真正可以滚动的区域
+    return; // ✅ 内容区域允许滑动
   }
-  e.preventDefault(); // 🚫 其他区域禁止滑动
+  e.preventDefault(); // 🚫 非滚动区禁止滑动
 }, { passive: false });

@@ -13,8 +13,87 @@
 <body>
    <main id="main-content" class="scrollable">
 
-  <!-- ✅ 顶部 Logo 区域 -->
-<header class="logo-card">
+
+
+<!-- 真实客户区（完整！直接替换你的 .client-section 内容） -->
+<div class="client-section" style="display: none;">
+  <!-- ========== 首页顶部横栏（左 Logo + 右公告） ========== -->
+  <div class="home-top-bar">
+    <!-- 左侧 Logo -->
+    <div class="topbar-left">
+      <img src="assets/images/logo.png" class="topbar-logo" alt="ChainForce Logo" />
+    </div>
+    <!-- 右侧公告入口 -->
+    <div class="topbar-right" onclick="location.href='html/sygg.html'">
+      <svg class="notice-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="20" height="20">
+        <path d="M224 0c-17.7 0-32 14.3-32 32l0 19.2C119 66 64 130.6 64 208l0 18.8c0 47-17.3 92.4-48.5 127.6l-7.4 8.3c-8.4 9.4-10.4 22.9-5.3 34.4S19.4 416 32 416l384 0c12.6 0 24-7.4 29.2-18.9s3.1-25-5.3-34.4l-7.4-8.3C401.3 319.2 384 273.9 384 226.8l0-18.8c0-77.4-55-142-128-156.8L256 32c0-17.7-14.3-32-32-32zm45.3 493.3c12-12 18.7-28.3 18.7-45.3l-64 0-64 0c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7z"/>
+      </svg>
+      <span class="notice-title">首页公告</span>
+    </div>
+  </div>
+
+<!-- 资产总览卡片（小眼睛悬浮右上角版） -->
+<div class="asset-summary-card">
+  <!-- 右上角小眼睛按钮 -->
+  <button id="toggle-balance" class="eye-btn" aria-label="隐藏资产">
+    <!-- 眼睛打开（可见） -->
+    <svg id="eye-open" width="22" height="22" viewBox="0 0 24 24" fill="none">
+      <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12Z" stroke="#1888ff" stroke-width="2"/>
+      <circle cx="12" cy="12" r="3" stroke="#1888ff" stroke-width="2"/>
+    </svg>
+    <!-- 眼睛关闭（隐藏） -->
+    <svg id="eye-closed" width="22" height="22" viewBox="0 0 24 24" fill="none" style="display:none;">
+      <path d="M3 3l18 18M1 12s4-7 11-7c2.387 0 4.29.529 5.798 1.275M23 12s-4 7-11 7c-2.553 0-4.635-.587-6.244-1.46M9.594 9.596A3.003 3.003 0 0 0 12 15a3 3 0 0 0 2.853-2.14M7 7l2.988 2.988" stroke="#1888ff" stroke-width="2"/>
+    </svg>
+  </button>
+  <!-- 卡片标题 -->
+  <div class="asset-summary-top">资产总估值</div>
+  <!-- 资产金额（可被JS动态替换显示/隐藏） -->
+  <div class="asset-balance">
+    <span id="asset-balance">≈ $12,345.67</span>
+  </div>
+  <!-- 操作按钮 -->
+  <div class="asset-actions">
+    <button onclick="goToDeposit()">充币</button>
+    <button onclick="goToWithdraw()">提币</button>
+  </div>
+</div>
+
+  <!-- 功能按钮区域：交易、转换、客服、退出登录 -->
+  <div class="asset-tools">
+    <div class="tool-btn" onclick="goToTrade()">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <path d="M142.9 142.9c-17.5 17.5-30.1 38-37.8 59.8c-5.9 16.7-24.2 25.4-40.8 19.5s-25.4-24.2-19.5-40.8C55.6 150.7 73.2 122 97.6 97.6c87.2-87.2 228.3-87.5 315.8-1L455 55c6.9-6.9 17.2-8.9 26.2-5.2s14.8 12.5 14.8 22.2l0 128c0 13.3-10.7 24-24 24l-8.4 0c0 0 0 0 0 0L344 224c-9.7 0-18.5-5.8-22.2-14.8s-1.7-19.3 5.2-26.2l41.1-41.1c-62.6-61.5-163.1-61.2-225.3 1zM16 312c0-13.3 10.7-24 24-24l7.6 0 .7 0L168 288c9.7 0 18.5 5.8 22.2 14.8s1.7 19.3-5.2 26.2l-41.1 41.1c62.6 61.5 163.1 61.2 225.3-1c17.5-17.5 30.1-38 37.8-59.8c5.9-16.7 24.2-25.4 40.8-19.5s25.4 24.2 19.5 40.8c-10.8 30.6-28.4 59.3-52.9 83.8c-87.2 87.2-228.3 87.5-315.8 1L57 457c-6.9 6.9-17.2 8.9-26.2 5.2S16 449.7 16 440l0-119.6 0-.7 0-7.6z"/>
+      </svg>
+      <div>交易</div>
+    </div>
+    <div class="tool-btn" onclick="goToConvert()">
+      <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-transfer-vertical"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 4v16l-6 -5.5" /><path d="M14 20v-16l6 5.5" />
+      </svg>
+      <div>转换</div>
+    </div>
+    <div class="tool-btn" onclick="goToService()">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <path d="M256 48C141.1 48 48 141.1 48 256l0 40c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-40C0 114.6 114.6 0 256 0S512 114.6 512 256l0 144.1c0 48.6-39.4 88-88.1 88L313.6 488c-8.3 14.3-23.8 24-41.6 24l-32 0c-26.5 0-48-21.5-48-48s21.5-48 48-48l32 0c17.8 0 33.3 9.7 41.6 24l110.4 .1c22.1 0 40-17.9 40-40L464 256c0-114.9-93.1-208-208-208zM144 208l16 0c17.7 0 32 14.3 32 32l0 112c0 17.7-14.3 32-32 32l-16 0c-35.3 0-64-28.7-64-64l0-48c0-35.3 28.7-64 64-64zm224 0c35.3 0 64 28.7 64 64l0 48c0 35.3-28.7 64-64 64l-16 0c-17.7 0-32-14.3-32-32l0-112c0-17.7 14.3-32 32-32l16 0z"/>
+      </svg>
+      <div>客服</div>
+    </div>
+    <div class="tool-btn" onclick="logoutUser()">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/>
+      </svg>
+      <div>退出</div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+  <!-- ✅ 顶部 Logo 区域  真实客户隐藏不可见-->
+<header id="guest-header" class="logo-card">
   <!-- 左侧 Logo 图 -->
   <img src="assets/images/logo.png" alt="Logo" class="logo-card-img" />
 
@@ -35,7 +114,7 @@
   </button>
 
     <!-- 注册按钮 -->
-    <a href="html/dl.html" class="register-button">注册</a>
+    <a href="html/zc.html" class="register-button">注册</a>
 
   </div>
 </header>
@@ -73,7 +152,8 @@
 </div>
 
 
-<div class="fullwidth-welcome">
+<!-- ✅ 欢迎区域  真实客户隐藏不可见 -->
+<div id="guest-welcome" class="fullwidth-welcome">
   <div class="welcome-text">
     <div class="welcome-title">👋 欢迎来到币圈星球</div>
     <div class="welcome-subtitle">开启你的数字资产之旅</div>

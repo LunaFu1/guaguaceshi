@@ -2,16 +2,16 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>登录</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>忘记密码</title>
   <link rel="stylesheet" href="../css/dl.css" />
 </head>
 <body>
   <main id="main-content">
     <div class="login-container">
 
-      <!-- 返回主页按钮 -->
-      <button class="back-icon" onclick="window.location.href='../index.html'" aria-label="返回主页">
+      <!-- 左上角返回按钮 -->
+      <button class="back-icon" onclick="window.location.href='dl.html'" aria-label="返回登录页">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
         </svg>
@@ -55,38 +55,71 @@
         </div>
       </div>
 
-      <!-- ✅ 内容整体下移区域 -->
+      <!-- 内容区域 -->
       <div class="content">
-        <div class="title">登陆后更精彩</div>
-        <div class="subtitle">ChainForce期待与你的相遇</div>
-        <div class="register-tip">没有账号，请先进行 <a href="zc.html">注册</a></div>
+        <div class="title">找回密码</div>
+        <div class="subtitle">通过注册邮箱重置您的登录密码</div>
 
+        <!-- 邮箱输入 -->
         <div class="input-group">
-          <input type="text" id="loginInput" placeholder="请输入邮箱" />
+          <input type="email" id="emailInput" placeholder="请输入注册邮箱" />
         </div>
 
+        <!-- 邮箱验证码 + 发送按钮（横向对齐，不换行） -->
+         <div class="input-group email-code-group">
+        <input type="text" id="emailCodeInput" placeholder="请输入邮箱验证码" />
+       <button id="sendEmailCodeBtn">发送验证码</button>
+       </div>
+
+        <!-- 新密码输入框 -->
+<div class="input-group">
+  <input type="password"
+         id="resetNewPasswordInput"
+         placeholder="请输入新密码"
+         oninput="checkPasswordStrengthBar('resetNewPasswordInput', 'resetStrengthBar')" />
+  <span class="eye-icon" onclick="togglePassword('resetNewPasswordInput', this)">👁️</span>
+</div>
+<!-- 密码强度能量条 -->
+<div class="password-strength-bar" id="resetStrengthBar">
+  <div class="strength-block"></div>
+  <div class="strength-block"></div>
+  <div class="strength-block"></div>
+</div>
+
+        <!-- 确认新密码 -->
         <div class="input-group">
-          <input type="password" id="passwordInput" placeholder="请输入密码" />
-          <span class="eye-icon" onclick="togglePassword()">👁️</span>
+          <input type="password" id="confirmPasswordInput" placeholder="请再次确认密码" />
         </div>
 
+        <!-- 最后的图片验证码 -->
         <div class="input-group captcha-group">
-          <input type="text" placeholder="请输入验证码" />
+          <input type="text" id="imgCodeInput" placeholder="请输入图片验证码" />
           <img id="captchaImage" src="" alt="验证码" onclick="refreshCaptcha()" />
         </div>
 
-        <div class="bottom-options">
-       <span id="switchLogin" onclick="switchLoginMode()">使用用户名登录</span>
-     <span id="goForget">忘记密码</span>
-     </div>
-
-        <button class="login-btn">登录</button>
+        <!-- 提交按钮 -->
+        <button class="login-btn" id="resetBtn">提交重置</button>
       </div>
     </div>
   </main>
-  
-  <div id="toast" class="toast hidden"></div>
-  <div id="bottom-nav-placeholder"></div>
+
+  <!-- 通用 JS -->
   <script src="../JavaScript/dl.js"></script>
+  <div id="toast" class="toast hidden"></div>
+
+  <!-- 本页附加逻辑 -->
+  <script>
+    // 阻止提交跳转
+    document.getElementById("resetBtn").addEventListener("click", function (e) {
+      e.preventDefault();
+      console.log("🧊 提交重置：等待后端接入");
+    });
+
+    // 发送邮箱验证码按钮（无后端，仅提示）
+    document.getElementById("sendEmailCodeBtn").addEventListener("click", function (e) {
+      e.preventDefault();
+      console.log("📧 点击发送邮箱验证码：等待后端对接");
+    });
+  </script>
 </body>
 </html>
